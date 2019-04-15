@@ -15,7 +15,15 @@ const routes: Routes = [
     loadChildren:
       './modules/credit-request/credit-request.module#CreditRequestModule'
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  {
+    path: 'users',
+    loadChildren: './modules/users/users.module#UsersModule'
+  },
+  {
+    path: 'user/:id',
+    loadChildren: './modules/user/user.module#UserModule'
+  },
+  { path: '', redirectTo: 'users', pathMatch: 'full' }
 ]
 
 @NgModule({
