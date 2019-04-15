@@ -1,0 +1,69 @@
+<main
+  *ngIf="creditRequest.creditStatus === creditStatusApproved()"
+  class="credit-request-container"
+>
+  <mat-card class="card">
+    <mat-card-title class="card-title">Calcula tu crédito</mat-card-title>
+    <mat-card-content class="card-content">
+      <section class="example-section">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>¿Cuanto dinero necesitas?</mat-label>
+            <input
+              matInput
+              placeholder="Placeholder"
+              [ngModel]="value | currency: 'USD':'symbol':'2.0'"
+              [ngModelOptions]="{ updateOn: 'blur' }"
+              (ngModelChange)="testPrice = $event"
+            />
+            <mat-icon matSuffix>toys</mat-icon>
+          </mat-form-field>
+        </p>
+      </section>
+      <section>
+        <strong>{{ min | currency: 'USD':'symbol':'2.0' }}</strong>
+        <mat-slider [max]="max" [min]="min" [(ngModel)]="value"></mat-slider>
+        <strong>{{ max | currency: 'USD':'symbol':'2.0' }}</strong>
+      </section>
+      <section>
+        <mat-form-field appearance="outline">
+          <mat-label>¿Cuando puedes pagarnos?</mat-label>
+          <input
+            matInput
+            [min]="minDate"
+            [max]="maxDate"
+            [(ngModel)]="date"
+            [matDatepicker]="picker"
+            placeholder="Choose a date"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field>
+      </section>
+    </mat-card-content>
+    <mat-card-actions class="card-actions">
+      <button
+        class="card-button"
+        mat-raised-button
+        color="primary"
+        (click)="makeRequestCredit()"
+      >
+        Solicita tu crédito
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</main>
+
+<main
+  *ngIf="creditRequest.creditStatus === creditStatusRejected()"
+  class="credit-request-container"
+>
+  <mat-card class="card">
+    <mat-card-content class="card-content">
+      <p>Ya no puedes solicitar créditos :(</p>
+    </mat-card-content>
+  </mat-card>
+</main>

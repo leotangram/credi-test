@@ -1,0 +1,38 @@
+<main class="login-container">
+  <mat-card class="card">
+    <mat-card-title class="card-title">Inicia sesión</mat-card-title>
+    <mat-card-content class="card-content">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput placeholder="Escribre tu correo" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            placeholder="Escribe tu contraseña"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="card-actions">
+      <button
+        class="card-button"
+        mat-raised-button
+        color="primary"
+        (click)="goToCreditRequest()"
+      >
+        Iniciar sesión
+      </button>
+      <span>No tienes una cuenta? <a routerLink="../signup">Créala</a></span>
+    </mat-card-actions>
+  </mat-card>
+</main>
