@@ -1,0 +1,40 @@
+<main class="rejected-requests-container">
+  <ng-container *ngFor="let rejectedRequest of rejectedRequests">
+    <mat-card
+      *ngIf="rejectedRequest.creditStatus === creditStatusRejected()"
+      class="card"
+      matRipple
+    >
+      <mat-card-content class="card-content">
+        <div>
+          <span
+            ><strong>Valor solicitado: </strong>
+            {{
+              rejectedRequest.requestedValue | currency: 'USD':'symbol':'2.0'
+            }}</span
+          >
+        </div>
+        <div>
+          <span
+            ><strong>Fecha a pagar: </strong>
+            {{ rejectedRequest.dateToPay | date }}</span
+          >
+        </div>
+        <div>
+          <span><strong>Estado de crédito: </strong> Rechazado</span>
+        </div>
+        <div>
+          <span
+            ><strong>Nombre usuario: </strong> {{ rejectedRequest.name }}</span
+          >
+        </div>
+        <div>
+          <span
+            ><strong>Cédula usuario: </strong>
+            {{ rejectedRequest.userIdNumber }}</span
+          >
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</main>

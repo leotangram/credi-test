@@ -1,7 +1,4 @@
-<main
-  *ngIf="creditRequest.creditStatus === creditStatusApproved()"
-  class="credit-request-container"
->
+<main *ngIf="creditStatusState === 0" class="credit-request-container">
   <mat-card class="card">
     <mat-card-title class="card-title">Calcula tu crédito</mat-card-title>
     <mat-card-content class="card-content">
@@ -57,10 +54,15 @@
   </mat-card>
 </main>
 
-<main
-  *ngIf="creditRequest.creditStatus === creditStatusRejected()"
-  class="credit-request-container"
->
+<main *ngIf="creditStatusState === 1" class="credit-request-container">
+  <mat-card class="card">
+    <mat-card-content class="card-content">
+      <p>¡Felicidades! puedes solicitar otro crédito cuando pagues el actual</p>
+    </mat-card-content>
+  </mat-card>
+</main>
+
+<main *ngIf="creditStatusState === 2" class="credit-request-container">
   <mat-card class="card">
     <mat-card-content class="card-content">
       <p>Ya no puedes solicitar créditos :(</p>

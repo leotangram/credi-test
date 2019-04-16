@@ -1,0 +1,31 @@
+<main class="history-container">
+  <ng-container *ngFor="let request of historyRequests">
+    <mat-card class="card" matRipple>
+      <mat-card-content class="card-content">
+        <div>
+          <span
+            ><strong>Valor solicitado: </strong>
+            {{ request.requestedValue | currency: 'USD':'symbol':'2.0' }}</span
+          >
+        </div>
+        <div>
+          <span
+            ><strong>Fecha a pagar: </strong>
+            {{ request.dateToPay | date }}</span
+          >
+        </div>
+        <div>
+          <span><strong>Estado de crédito: </strong> Rechazado</span>
+        </div>
+        <div>
+          <span><strong>Nombre usuario: </strong> {{ request.name }}</span>
+        </div>
+        <div>
+          <span
+            ><strong>Cédula usuario: </strong> {{ request.userIdNumber }}</span
+          >
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</main>

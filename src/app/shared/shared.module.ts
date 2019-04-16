@@ -12,7 +12,8 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatRippleModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatToolbarModule
 } from '@angular/material'
 
 @NgModule({
@@ -30,7 +31,8 @@ import {
     MatInputModule,
     MatNativeDateModule,
     MatRippleModule,
-    MatSliderModule
+    MatSliderModule,
+    MatToolbarModule
   ],
   exports: [
     // Components
@@ -47,7 +49,8 @@ import {
     MatIconModule,
     MatInputModule,
     MatRippleModule,
-    MatSliderModule
+    MatSliderModule,
+    MatToolbarModule
   ],
   providers: [MatNativeDateModule]
 })

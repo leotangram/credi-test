@@ -5,21 +5,29 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Nombre" />
+          <input matInput placeholder="Nombre" [(ngModel)]="user.name" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Correo electrónico</mat-label>
-          <input matInput placeholder="Escribre tu correo" />
+          <input
+            matInput
+            placeholder="Escribre tu correo"
+            [(ngModel)]="user.email"
+          />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Cédula</mat-label>
-          <input matInput placeholder="Escribe tu cédula" />
+          <input
+            matInput
+            placeholder="Escribe tu cédula"
+            [(ngModel)]="user.numberIdentification"
+          />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </p>
@@ -30,6 +38,7 @@
             matInput
             placeholder="Escribe tu contraseña"
             [type]="hide ? 'password' : 'text'"
+            [(ngModel)]="user.password"
           />
           <mat-icon matSuffix (click)="hide = !hide">{{
             hide ? 'visibility_off' : 'visibility'
@@ -42,7 +51,8 @@
         class="card-button"
         mat-raised-button
         color="primary"
-        (click)="goToCreditRequest()"
+        (click)="signup()"
+        (keyup.enter)="signup()"
       >
         Registrate
       </button>

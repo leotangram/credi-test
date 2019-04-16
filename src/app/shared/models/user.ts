@@ -1,10 +1,10 @@
 export class UserModel {
   constructor(
-    public name: string,
-    public email: string,
-    public idNumber: number, // Cédula
+    public name?: string,
+    public email?: string,
+    public numberIdentification?: number, // Cédula
     public password?: string,
     public suitable?: number,
-    public _id?: string
+    public id?: string
   ) {}
 }

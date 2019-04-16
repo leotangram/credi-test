@@ -1,0 +1,26 @@
+<main class="credit-pending-container">
+  <ng-container *ngFor="let creditPending of creditsPending">
+    <mat-card
+      *ngIf="creditPending.paymentCredit === paymentCreditNo() && creditPending.creditStatus === 0"
+      class="card"
+      matRipple
+    >
+      <mat-card-content class="card-content">
+        <div>
+          <span
+            ><strong>Valor solicitado: </strong>
+            {{
+              creditPending.requestedValue | currency: 'USD':'symbol':'2.0'
+            }}</span
+          >
+        </div>
+        <div>
+          <span><strong>Nombre: </strong> {{ creditPending.name }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="updateCreditPending(creditPending)">Pagar</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</main>

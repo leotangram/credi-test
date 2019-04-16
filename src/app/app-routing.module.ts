@@ -1,29 +1,42 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
+import { AuthGuard } from './shared/guard/guard'
 
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: './modules/login/login.module#LoginModule'
+    loadChildren: './modules/login/login.module#LoginModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'signup',
-    loadChildren: './modules/signup/signup.module#SignupModule'
+    loadChildren: './modules/signup/signup.module#SignupModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'credit-request',
     loadChildren:
-      './modules/credit-request/credit-request.module#CreditRequestModule'
+      './modules/credit-request/credit-request.module#CreditRequestModule',
+    canActivate: [AuthGuard]
   },
   {
-    path: 'users',
-    loadChildren: './modules/users/users.module#UsersModule'
+    path: 'rejected-requests',
+    loadChildren:
+      './modules/rejected-requests/rejected-requests.module#RejectedRequestsModule',
+    canActivate: [AuthGuard]
   },
   {
-    path: 'user/:id',
-    loadChildren: './modules/user/user.module#UserModule'
+    path: 'credit-pending',
+    loadChildren:
+      './modules/credit-pending/credit-pending.module#CreditPendingModule',
+    canActivate: [AuthGuard]
   },
-  { path: '', redirectTo: 'users', pathMatch: 'full' }
+  {
+    path: 'history',
+    loadChildren: './modules/history/history.module#HistoryModule',
+    canActivate: [AuthGuard]
+  },
+  { path: '', redirectTo: 'credit-request', pathMatch: 'full' }
 ]
 
 @NgModule({
