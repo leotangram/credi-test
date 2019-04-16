@@ -34,32 +34,39 @@ export class CreditRequestComponent implements OnInit {
     this.initCreditRequests()
     this.maxMinDate()
     this.initRequestCredit()
+    console.log('Hola');
+    
   }
 
   /** Init Session */
   initSession() {
     this.session = JSON.parse(localStorage.getItem('session'))
+    console.log(this.session.numberIdentification)
   }
 
   /** Init Credit Requests */
   initCreditRequests() {
     this.creditRequestService.getAll().subscribe(requesResult => {
       this.requests = requesResult.creditRequests
-
       for (const request of this.requests) {
-        if (request.creditStatus === 1) {
-          this.creditStatusState = 2
-          return
-        }
-        if (request.creditStatus === 0) {
-          if (request.paymentCredit === 1) {
-            this.creditStatusState = 1
+        if (request.userIdNumber === this.session.numberIdentification) {
+          if (request.creditStatus === 1) {
+            this.creditStatusState = 2
             return
           }
-          if (request.paymentCredit === 0) {
-            this.creditStatusState = 0
+          if (request.creditStatus === 0) {
+            if (request.paymentCredit === 1) {
+              this.creditStatusState = 1
+              return
+            }
+            if (request.paymentCredit === 0) {
+              this.creditStatusState = 0
+              return
+            }
           }
         }
+        this.creditStatusState = 0
+        return
       }
       return
     })
